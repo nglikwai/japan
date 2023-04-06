@@ -98,9 +98,9 @@ export default function LocationDialog({ open, handleClose, story }) {
             autoFocus
             checked={locations.includes(story.title)}
             onChange={handleWantGo}
-            disabled={locations.length > 2}
+            disabled={locations.length > 5}
           />
-          {locations.length > 2 ? "每人選擇 3 個" : "我想去這裡"}
+          {locations.length > 2 ? "每人選擇 6 個" : "我想去這裡"}
         </DialogActions>
       </BootstrapDialog>
     </div>

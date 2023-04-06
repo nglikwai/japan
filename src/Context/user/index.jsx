@@ -7,7 +7,7 @@ export const useUser = () => useContext(UserContext);
 const UserProvider = ({ children }) => {
   const [user, setUser] = useState("");
   const [noticeOpen, setNoticeOpen] = useState(false);
-  const [notice, setNotice] = useState("");
+  const [notice, setNotice] = useState("載入成功");
   const [locations, setLocations] = useState([]);
   const [value, setValue] = useState();
 
