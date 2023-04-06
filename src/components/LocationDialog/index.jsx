@@ -1,4 +1,3 @@
-import { useState } from "react";
 import PropTypes from "prop-types";
 import { styled } from "@mui/material/styles";
 import Dialog from "@mui/material/Dialog";
@@ -48,28 +47,33 @@ BootstrapDialogTitle.propTypes = {
   onClose: PropTypes.func.isRequired,
 };
 
-export default function LocationDialog({
-  open,
-  handleClickOpen,
-  handleClose,
-  story,
-  setStory,
-}) {
-  const [want, setWant] = useState(false);
-  const { noticeOpen, setNoticeOpen, setNotice, setLocations, locations } =
-    useUser();
+export default function LocationDialog({ open, handleClose, story }) {
+  const { user, setNotice, setLocations, locations } = useUser();
 
+  const updateUserLocations = async (loca) => {
+    fetch(`https://api-dse00.herokuapp.com/familys/${user}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ locations: loca }),
+    })
+      .then((response) => response.json())
+      .then((data) => console.log(data))
+      .catch((error) => console.error(error));
+  };
   const handleWantGo = (e) => {
     handleClose();
     if (locations.includes(story.title)) {
       setNotice(`${story.title} 已取消`);
       const _locations = [...locations];
       _locations.splice(locations.indexOf(story.title), 1);
-
       setLocations(_locations);
+      updateUserLocations(_locations);
     } else {
       setNotice(`已選擇 ${story.title}`);
       setLocations([...locations, story.title]);
+      updateUserLocations([...locations, story.title]);
     }
   };
 
@@ -94,8 +98,9 @@ export default function LocationDialog({
             autoFocus
             checked={locations.includes(story.title)}
             onChange={handleWantGo}
+            disabled={locations.length > 2}
           />
-          我想去這裡
+          {locations.length > 2 ? "每人選擇 3 個" : "我想去這裡"}
         </DialogActions>
       </BootstrapDialog>
     </div>

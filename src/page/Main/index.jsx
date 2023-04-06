@@ -57,7 +57,14 @@ export const Main = () => {
           出發時間：15:40 pm
         </Box>
       </Stack>
-      <Stack width="80%" bgcolor="#fff" borderRadius={3} p={3} boxShadow={1}>
+      <Stack
+        width="80%"
+        bgcolor="#fff"
+        borderRadius={3}
+        p={3}
+        boxShadow={1}
+        spacing={2}
+      >
         <Box
           display="flex"
           alignItems={"center"}
@@ -70,6 +77,18 @@ export const Main = () => {
             <Chip label={"緊急"} color="error" />
           )}
         </Box>
+        {locations.length > 0 && (
+          <>
+            <Box>
+              <Box component={"span"} pr={1}>
+                我想去
+              </Box>
+              {locations.map((item) => (
+                <Chip label={item} sx={{ marginRight: "10px" }} />
+              ))}
+            </Box>
+          </>
+        )}
         <Button variant="contained" onClick={goToLocation}>
           選擇景點
         </Button>

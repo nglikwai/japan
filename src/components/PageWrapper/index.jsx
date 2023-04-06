@@ -9,7 +9,7 @@ import { useCookies } from "react-cookie";
 export const PageWrapper = ({ children }) => {
   const navigate = useNavigate();
 
-  const { user, setUser, setNotice } = useUser();
+  const { user, setUser, setNotice, setLocations, locations } = useUser();
   const [cookies, setCookie] = useCookies(["name"]);
 
   useEffect(() => {
@@ -25,6 +25,19 @@ export const PageWrapper = ({ children }) => {
       setNotice("歡迎回來");
     }
   }, [cookies.name, navigate, setUser, setNotice]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await fetch(
+        `https://api-dse00.herokuapp.com/familys/${user}`
+      );
+      const json = await response.json();
+      setLocations(json.data.locations);
+    };
+    if (user) {
+      fetchData();
+    }
+  }, [user]);
 
   return (
     <Stack width="100vw" boxSizing="border-box" bgcolor={"#f9f9f9"}>
