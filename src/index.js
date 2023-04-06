@@ -3,11 +3,28 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { BrowserRouter } from 'react-router-dom';
+import PageWrapper from './components/PageWrapper';
+import UserProvider from './Context/user';
+import { CookiesProvider } from 'react-cookie';
+import { ThemeProvider } from '@mui/material/styles';
+import { theme } from './theme';
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <ThemeProvider theme={theme}>
+      <CookiesProvider>
+        <UserProvider>
+          <BrowserRouter>
+            <PageWrapper>
+              <App />
+            </PageWrapper>
+          </BrowserRouter>
+        </UserProvider>
+      </CookiesProvider>
+    </ThemeProvider>
   </React.StrictMode>
 );
 
