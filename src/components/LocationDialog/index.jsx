@@ -6,7 +6,7 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogActions from "@mui/material/DialogActions";
 import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
-import { Typography, Checkbox } from "@mui/material";
+import { Typography, Checkbox, Button } from "@mui/material";
 import { useUser } from "../../Context/user";
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
@@ -48,7 +48,7 @@ BootstrapDialogTitle.propTypes = {
 };
 
 export default function LocationDialog({ open, handleClose, story }) {
-  const { user, setNotice, setLocations, locations } = useUser();
+  const { user, setNotice, setLocations, locations, setNoticeOpen } = useUser();
 
   const updateUserLocations = async (loca) => {
     fetch(`https://api-dse00.herokuapp.com/familys/${user}`, {
@@ -64,13 +64,19 @@ export default function LocationDialog({ open, handleClose, story }) {
   };
   const handleWantGo = (e) => {
     handleClose();
+
     if (locations.includes(story.title)) {
-      setNotice(`${story.title} 已取消`);
+      setNotice(`已取消 ${story.title}`);
       const _locations = [...locations];
       _locations.splice(locations.indexOf(story.title), 1);
       setLocations(_locations);
       updateUserLocations(_locations);
     } else {
+      if (locations.length > 5) {
+        setNoticeOpen(true);
+        setNotice("每人只能選擇 6 個");
+        return;
+      }
       setNotice(`已選擇 ${story.title}`);
       setLocations([...locations, story.title]);
       updateUserLocations([...locations, story.title]);
@@ -98,9 +104,10 @@ export default function LocationDialog({ open, handleClose, story }) {
             autoFocus
             checked={locations.includes(story.title)}
             onChange={handleWantGo}
-            disabled={locations.length > 5}
           />
-          {locations.length > 2 ? "每人選擇 6 個" : "我想去這裡"}
+          {locations.length > 5
+            ? "每人選擇 6 個"
+            : `我想去這裡 ${locations.length} / 6`}
         </DialogActions>
       </BootstrapDialog>
     </div>
