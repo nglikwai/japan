@@ -26,12 +26,7 @@ export const PageWrapper = ({ children }) => {
   }, [cookies.name, navigate, setUser, setNotice]);
 
   return (
-    <Stack
-      width="100vw"
-      height="100vh"
-      boxSizing="border-box"
-      bgcolor={"#f9f9f9"}
-    >
+    <Stack width="100vw" boxSizing="border-box" bgcolor={"#f9f9f9"}>
       {children}
 
       <SimpleSnackbar />
