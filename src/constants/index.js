@@ -128,5 +128,6 @@ export const itemData = [
         description:
             "天保山海洋館是位於大阪市港區的一個著名海洋館，擁有各種海洋生物，是一個遊覽和觀光的好去處。",
         author: "@日本〒552-0022 大阪府大阪市港区海岸通１丁目１６−１",
+        img: 'https://img.bigfang.tw/2017/09/1504253340-4fd8f41feb6f8374962b9bfd5fdd198f.jpg'
     },
 ];

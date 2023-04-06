@@ -7,7 +7,13 @@ export const Main = () => {
   const { user } = useUser();
 
   return (
-    <Stack p={3} spacing={3} boxSizing="border-box" overflow={"scroll"}>
+    <Stack
+      p={3}
+      spacing={3}
+      boxSizing="border-box"
+      overflow={"scroll"}
+      height="100vh"
+    >
       <Box component={"h1"} sx={{ color: "primary.main" }}>
         你好 {nameMapping[user]?.name}
       </Box>

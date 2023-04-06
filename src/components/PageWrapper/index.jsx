@@ -32,7 +32,7 @@ export const PageWrapper = ({ children }) => {
       <SimpleSnackbar />
       <Box
         sx={{
-          position: "absolute",
+          position: "sticky",
           bottom: 0,
           width: "100vw",
         }}

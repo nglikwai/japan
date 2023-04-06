@@ -10,7 +10,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { useUser } from "../../Context/user";
 
 export default function SimpleBottomNavigation() {
-  const [value, setValue] = useState(1);
+  const [value, setValue] = useState();
   const navigate = useNavigate();
   const location = useLocation();
 
