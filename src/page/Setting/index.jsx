@@ -1,14 +1,10 @@
 import { useState } from "react";
-import ImageList from "@mui/material/ImageList";
-import ImageListItem from "@mui/material/ImageListItem";
-import ImageListItemBar from "@mui/material/ImageListItemBar";
-import ListSubheader from "@mui/material/ListSubheader";
+
 import { IconButton, Chip, Box, Stack, Avatar } from "@mui/material";
-import InfoIcon from "@mui/icons-material/Info";
-import LocationDialog from "../../components/LocationDialog";
+
 import { useUser } from "../../Context/user";
 import { itemData, nameMapping } from "../../constants";
-import RoomIcon from "@mui/icons-material/Room";
+import SettingsIcon from "@mui/icons-material/Settings";
 import GroupIcon from "@mui/icons-material/Group";
 
 export default function Locations() {
@@ -33,13 +29,13 @@ export default function Locations() {
         display="flex"
         alignItems="center"
       >
-        <RoomIcon />
+        <SettingsIcon />
         設置
       </Box>
       <Stack display="flex" alignItems="center">
         <Avatar
           alt="Remy Sharp"
-          src="/static/images/dad.png"
+          src={`/static/images/${user}.png`}
           sx={{ width: 200, height: 200 }}
         />
         <Box component={"h3"}>{nameMapping[user]?.name}</Box>
@@ -80,6 +76,30 @@ export default function Locations() {
                 <Box pl={3}>{i.name}</Box>
               </Box>
             ))}
+        </Stack>
+        <Box
+          component={"h3"}
+          display="flex"
+          alignItems="center"
+          sx={{ alignSelf: "flex-start" }}
+        >
+          <GroupIcon />
+          <Box pl={1}>個人化設置</Box>
+        </Box>
+        <Stack
+          spacing={2}
+          width="100%"
+          sx={{
+            background: "white",
+            padding: "1rem",
+            borderRadius: "1rem",
+            boxShadow: "0 0 20px #ddd",
+          }}
+        >
+          <Box p="0.7rem" borderBottom="1px solid #ddd">
+            字體大小
+          </Box>
+          <Box p="0.7rem">黑夜模式</Box>
         </Stack>
       </Stack>
     </Stack>

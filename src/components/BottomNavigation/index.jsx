@@ -36,7 +36,12 @@ export default function SimpleBottomNavigation() {
     }
   }, [value, user, navigate]);
   return (
-    <Box boxShadow={4}>
+    <Box
+      boxShadow={4}
+      boxSizing="border-box"
+      maxWidth="100vw"
+      sx={{ background: "white" }}
+    >
       {location.pathname !== "/" && (
         <BottomNavigation
           showLabels
@@ -44,6 +49,7 @@ export default function SimpleBottomNavigation() {
           onChange={(event, newValue) => {
             setValue(newValue);
           }}
+          sx={{ boxSizing: "border-box", maxWidth: "97vw" }}
         >
           <BottomNavigationAction label="行程" icon={<FavoriteIcon />} />
           <BottomNavigationAction label="景點" icon={<LocationOnIcon />} />
@@ -51,7 +57,11 @@ export default function SimpleBottomNavigation() {
           <BottomNavigationAction label="相冊" icon={<PhotoLibraryIcon />} />
           <BottomNavigationAction
             icon={
-              <Avatar alt="Remy Sharp" src={`/static/images/${user}.png`} />
+              <Avatar
+                alt="Remy Sharp"
+                src={`/static/images/${user}.png`}
+                sx={{ padding: "0 0" }}
+              />
             }
           />
         </BottomNavigation>
