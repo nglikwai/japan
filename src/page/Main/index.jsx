@@ -6,11 +6,11 @@ import { nameMapping } from "../../constants";
 import { useNavigate } from "react-router";
 import FlightIcon from "@mui/icons-material/Flight";
 export const Main = () => {
-  const { user, locations } = useUser();
+  const { user, locations, setValue } = useUser();
   const navigate = useNavigate();
 
   const goToLocation = () => {
-    navigate("/locations");
+    setValue(1);
   };
   return (
     <Stack p={3} spacing={3} boxSizing="border-box" overflow={"scroll"}>
@@ -63,9 +63,16 @@ export const Main = () => {
           alignItems={"center"}
           justifyContent="space-between"
         >
-          <Box component={"h3"}>準備行李</Box> <Chip label={"未完成"} />
+          <Box component={"h3"}>每人選擇景點</Box>
+          {locations.length > 0 ? (
+            <Chip label={"已完成"} color="success" />
+          ) : (
+            <Chip label={"緊急"} color="error" />
+          )}
         </Box>
-        <LuggageDialog />
+        <Button variant="contained" onClick={goToLocation}>
+          選擇景點
+        </Button>
       </Stack>
       <Stack width="80%" bgcolor="#fff" borderRadius={3} p={3} boxShadow={1}>
         <Box
@@ -73,17 +80,11 @@ export const Main = () => {
           alignItems={"center"}
           justifyContent="space-between"
         >
-          <Box component={"h3"}>每人選擇景點</Box>
-          {locations.length > 0 ? (
-            <Chip label={"已完成"} color="success" />
-          ) : (
-            <Chip label={"未完成"} />
-          )}
+          <Box component={"h3"}>準備行李</Box> <Chip label={"未完成"} />
         </Box>
-        <Button variant="contained" onClick={goToLocation}>
-          選擇景點
-        </Button>
+        <LuggageDialog />
       </Stack>
+
       <Stack
         spacing={3}
         width="80%"

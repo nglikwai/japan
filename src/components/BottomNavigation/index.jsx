@@ -12,11 +12,10 @@ import { nameMapping } from "../../constants";
 import { Avatar } from "@mui/material";
 
 export default function SimpleBottomNavigation() {
-  const [value, setValue] = useState();
   const navigate = useNavigate();
   const location = useLocation();
 
-  const { user } = useUser();
+  const { user, value, setValue } = useUser();
 
   useEffect(() => {
     if (value === 0) {

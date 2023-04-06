@@ -14,6 +14,7 @@ export const PageWrapper = ({ children }) => {
 
   useEffect(() => {
     if (cookies.name && window.location.pathname.length === 1) {
+      console.log("likwai back");
       setUser(cookies.name);
       navigate("/main");
       setNotice("歡迎回來");

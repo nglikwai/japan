@@ -9,6 +9,7 @@ const UserProvider = ({ children }) => {
   const [noticeOpen, setNoticeOpen] = useState(false);
   const [notice, setNotice] = useState("");
   const [locations, setLocations] = useState([]);
+  const [value, setValue] = useState();
 
   return (
     <>
@@ -22,6 +23,8 @@ const UserProvider = ({ children }) => {
           setNotice,
           locations,
           setLocations,
+          value,
+          setValue,
         }}
       >
         {children}
