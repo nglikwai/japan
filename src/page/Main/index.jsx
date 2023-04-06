@@ -4,6 +4,7 @@ import { useUser } from "../../Context/user";
 import ParkIcon from "@mui/icons-material/Park";
 import { nameMapping } from "../../constants";
 import { useNavigate } from "react-router";
+import FlightIcon from "@mui/icons-material/Flight";
 export const Main = () => {
   const { user, locations } = useUser();
   const navigate = useNavigate();
@@ -40,8 +41,12 @@ export const Main = () => {
           {nameMapping[user]?.reference}
         </Box>
         <Box alignItems="center" display="flex">
+          <FlightIcon color="primary" />
+          航班：UO 862
+        </Box>
+        <Box alignItems="center" display="flex">
           <ParkIcon color="primary" />
-          地點：日本大阪
+          地點：香港 - 日本大阪
         </Box>
         <Box alignItems="center" display="flex">
           <ParkIcon color="primary" />
@@ -49,15 +54,7 @@ export const Main = () => {
         </Box>
         <Box alignItems="center" display="flex">
           <ParkIcon color="primary" />
-          出發時間：11:00 am
-        </Box>
-        <Box alignItems="center" display="flex">
-          <ParkIcon color="primary" />
-          回程日期：01-08-2023
-        </Box>
-        <Box alignItems="center" display="flex">
-          <ParkIcon color="primary" />
-          出發時間：12:00 am
+          出發時間：15:40 pm
         </Box>
       </Stack>
       <Stack width="80%" bgcolor="#fff" borderRadius={3} p={3} boxShadow={1}>
@@ -86,6 +83,42 @@ export const Main = () => {
         <Button variant="contained" onClick={goToLocation}>
           選擇景點
         </Button>
+      </Stack>
+      <Stack
+        spacing={3}
+        width="80%"
+        bgcolor="#fff"
+        borderRadius={3}
+        p={3}
+        boxShadow={1}
+      >
+        <Box component={"h3"}>回程機票</Box>
+        <Box
+          component={"h1"}
+          sx={{
+            color: "primary.main",
+            display: "flex",
+            justifyContent: "center",
+          }}
+        >
+          {nameMapping[user]?.reference}
+        </Box>
+        <Box alignItems="center" display="flex">
+          <FlightIcon color="primary" />
+          航班：UO 687
+        </Box>
+        <Box alignItems="center" display="flex">
+          <ParkIcon color="primary" />
+          地點：日本大阪 - 香港
+        </Box>
+        <Box alignItems="center" display="flex">
+          <ParkIcon color="primary" />
+          出發日期：01-08-2023
+        </Box>
+        <Box alignItems="center" display="flex">
+          <ParkIcon color="primary" />
+          出發時間：15:40 pm
+        </Box>
       </Stack>
     </Stack>
   );
