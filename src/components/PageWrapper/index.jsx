@@ -33,7 +33,7 @@ export const PageWrapper = ({ children }) => {
       <Box
         sx={{
           position: "sticky",
-          bottom: 0,
+          bottom: "10px",
           width: "100vw",
         }}
       >

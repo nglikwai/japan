@@ -8,25 +8,31 @@ import LocationOnIcon from "@mui/icons-material/LocationOn";
 import HomeIcon from "@mui/icons-material/Home";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useUser } from "../../Context/user";
+import { nameMapping } from "../../constants";
+import { Avatar } from "@mui/material";
 
 export default function SimpleBottomNavigation() {
   const [value, setValue] = useState();
   const navigate = useNavigate();
   const location = useLocation();
 
-  const { user } = useUser;
+  const { user } = useUser();
+
   useEffect(() => {
     if (value === 0) {
       navigate("plan");
     }
     if (value === 1) {
-      navigate("main");
+      navigate("locations");
     }
     if (value === 2) {
-      navigate("locations");
+      navigate("main");
     }
     if (value === 3) {
       navigate("album");
+    }
+    if (value === 4) {
+      navigate("setting");
     }
   }, [value, user, navigate]);
   return (
@@ -40,9 +46,14 @@ export default function SimpleBottomNavigation() {
           }}
         >
           <BottomNavigationAction label="行程" icon={<FavoriteIcon />} />
+          <BottomNavigationAction label="景點" icon={<LocationOnIcon />} />
           <BottomNavigationAction label="首頁" icon={<HomeIcon />} />
-          <BottomNavigationAction label="地點" icon={<LocationOnIcon />} />
           <BottomNavigationAction label="相冊" icon={<PhotoLibraryIcon />} />
+          <BottomNavigationAction
+            icon={
+              <Avatar alt="Remy Sharp" src={`/static/images/${user}.png`} />
+            }
+          />
         </BottomNavigation>
       )}
     </Box>

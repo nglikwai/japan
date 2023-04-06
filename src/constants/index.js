@@ -1,10 +1,22 @@
+import FastfoodIcon from "@mui/icons-material/Fastfood";
+import LaptopMacIcon from "@mui/icons-material/LaptopMac";
+import HotelIcon from "@mui/icons-material/Hotel";
+import LuggageIcon from "@mui/icons-material/Luggage";
+import Typography from "@mui/material/Typography";
+import FlightTakeoffIcon from "@mui/icons-material/FlightTakeoff";
+import FlightLandIcon from "@mui/icons-material/FlightLand";
+import RestaurantIcon from "@mui/icons-material/Restaurant";
+import { Box, Stack } from "@mui/material";
+import AirplaneTicketIcon from "@mui/icons-material/AirplaneTicket";
+import TimeToLeaveIcon from "@mui/icons-material/TimeToLeave";
+
 export const nameMapping = {
     dad: {
-        name: '爸爸',
+        name: '爸爸 / 大姑爺',
         reference: 'GEYJSE'
     },
     mum: {
-        name: '媽媽',
+        name: '媽媽 /大姑媽',
         reference: 'D14J8L'
     },
     likwai: {
@@ -131,3 +143,182 @@ export const itemData = [
         img: 'https://img.bigfang.tw/2017/09/1504253340-4fd8f41feb6f8374962b9bfd5fdd198f.jpg'
     },
 ];
+
+
+export const location_plan = [
+    [
+        {
+            time: "01 Apr 2023 00:00:00 GMT+0800",
+            icon: <AirplaneTicketIcon />,
+            title: "預訂機票",
+            description: "",
+        },
+    ],
+    [
+        {
+            time: "20 Apr 2023 00:00:00 GMT+0800",
+            icon: <HotelIcon />,
+            title: "預訂酒店",
+            description: "",
+        },
+    ],
+    [
+        {
+            time: "24 Jul 2023 00:00:00 GMT+0800",
+            icon: <LuggageIcon />,
+            title: "收拾行李",
+            description: "",
+        },
+    ],
+    [
+        {
+            time: "27 Jul 2023 15:40:00 GMT+0800",
+            icon: <FlightTakeoffIcon />,
+            title: "起飛",
+            description: "香港國際機場 HKG",
+        },
+        {
+            time: "27 Jul 2023 20:30:00 GMT+0800",
+            icon: <FlightLandIcon />,
+            title: "到達",
+            description: "大阪關西國際機場 KIX",
+        },
+        {
+            time: "27 Jul 2023 21:30:00 GMT+0800",
+            icon: <HotelIcon />,
+            title: "酒店 Check in",
+            description: "大阪酒店",
+        },
+        {
+            time: "27 Jul 2023 22:00:00 GMT+0800",
+            icon: <RestaurantIcon />,
+            title: "晚餐",
+            description: "大阪酒店",
+        },
+    ],
+    [
+        {
+            time: "28 Jul 2023 10:00:00 GMT+0800",
+            icon: <RestaurantIcon />,
+            title: "早餐",
+            description: "大阪酒店",
+        },
+        {
+            time: "28 Jul 2023 11:00:00 GMT+0800",
+            icon: <RestaurantIcon />,
+            title: "午餐",
+            description: "大阪酒店",
+        },
+        {
+            time: "28 Jul 2023 20:00:00 GMT+0800",
+            icon: <RestaurantIcon />,
+            title: "晚餐",
+            description: "大阪酒店",
+        },
+        {
+            time: "28 Jul 2023 21:00:00 GMT+0800",
+            icon: <HotelIcon />,
+            title: "酒店休息",
+            description: "大阪酒店",
+        },
+    ],
+    [
+        {
+            time: "29 Jul 2023 10:00:00 GMT+0800",
+            icon: <RestaurantIcon />,
+            title: "早餐",
+            description: "大阪酒店",
+        },
+        {
+            time: "29 Jul 2023 11:00:00 GMT+0800",
+            icon: <RestaurantIcon />,
+            title: "午餐",
+            description: "大阪酒店",
+        },
+        {
+            time: "29 Jul 2023 20:00:00 GMT+0800",
+            icon: <RestaurantIcon />,
+            title: "晚餐",
+            description: "大阪酒店",
+        },
+        {
+            time: "29 Jul 2023 21:00:00 GMT+0800",
+            icon: <HotelIcon />,
+            title: "酒店休息",
+            description: "大阪酒店",
+        },
+    ],
+    [
+        {
+            time: "30 Jul 2023 10:00:00 GMT+0800",
+            icon: <RestaurantIcon />,
+            title: "早餐",
+            description: "大阪酒店",
+        },
+        {
+            time: "30 Jul 2023 11:00:00 GMT+0800",
+            icon: <RestaurantIcon />,
+            title: "午餐",
+            description: "大阪酒店",
+        },
+        {
+            time: "30 Jul 2023 20:00:00 GMT+0800",
+            icon: <RestaurantIcon />,
+            title: "晚餐",
+            description: "大阪酒店",
+        },
+        {
+            time: "30 Jul 2023 21:00:00 GMT+0800",
+            icon: <HotelIcon />,
+            title: "酒店休息",
+            description: "大阪酒店",
+        },
+    ],
+    [
+        {
+            time: "31 Jul 2023 10:00:00 GMT+0800",
+            icon: <RestaurantIcon />,
+            title: "早餐",
+            description: "大阪酒店",
+        },
+        {
+            time: "31 Jul 2023 11:00:00 GMT+0800",
+            icon: <RestaurantIcon />,
+            title: "午餐",
+            description: "大阪酒店",
+        },
+        {
+            time: "31 Jul 2023 20:00:00 GMT+0800",
+            icon: <RestaurantIcon />,
+            title: "晚餐",
+            description: "大阪酒店",
+        },
+        {
+            time: "31 Jul 2023 21:00:00 GMT+0800",
+            icon: <HotelIcon />,
+            title: "酒店休息",
+            description: "大阪酒店",
+        },
+    ],
+    [
+        {
+            time: "01 Aug 2023 10:00:00 GMT+0800",
+            icon: <RestaurantIcon />,
+            title: "早餐",
+            description: "大阪酒店",
+        },
+        {
+            time: "27 Jul 2023 15:40:00 GMT+0800",
+            icon: <FlightTakeoffIcon />,
+            title: "起飛",
+            description: "大阪關西國際機場 KIX",
+        },
+        {
+            time: "27 Jul 2023 20:30:00 GMT+0800",
+            icon: <FlightLandIcon />,
+            title: "到達",
+            description: "香港國際機場 HKG",
+
+        },
+    ],
+]
