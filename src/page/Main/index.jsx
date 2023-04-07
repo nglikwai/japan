@@ -13,7 +13,7 @@ export const Main = () => {
     setValue(1);
   };
   return (
-    <Stack p={3} spacing={3} boxSizing="border-box" overflow={"scroll"}>
+    <Stack pl={3} pb={3} spacing={3} boxSizing="border-box" overflow={"scroll"}>
       <Box component={"h1"} sx={{ color: "primary.main" }}>
         你好 {nameMapping[user]?.name}
       </Box>
@@ -22,39 +22,43 @@ export const Main = () => {
         以下是你的行程
       </Box>
       <Stack
-        spacing={3}
+        spacing={2}
         width="80%"
-        bgcolor="#fff"
+        bgcolor="success.main"
         borderRadius={3}
         p={3}
         boxShadow={1}
       >
-        <Box>機票編號</Box>
+        <Box color="primary.main" sx={{ textShadow: "0 0 4px #eceae1" }}>
+          出發航班
+        </Box>
         <Box
           component={"h1"}
           sx={{
-            color: "primary.main",
+            color: "#eceae1",
             display: "flex",
             justifyContent: "center",
+            fontWeight: "bold",
+            textShadow: "0 0 4px #eceae19b",
           }}
         >
           {nameMapping[user]?.reference}
         </Box>
-        <Box alignItems="center" display="flex">
-          <FlightIcon color="primary" />
-          航班：UO 862
+        <Box color="#eceae1" alignItems="center" display="flex">
+          <FlightIcon color="primary" sx={{ marginRight: "8px" }} />
+          <Box color="primary.main"> 航班：</Box>UO 862
         </Box>
-        <Box alignItems="center" display="flex">
-          <ParkIcon color="primary" />
-          地點：香港 - 日本大阪
+        <Box color="#eceae1" alignItems="center" display="flex">
+          <ParkIcon color="primary" sx={{ marginRight: "8px" }} />
+          <Box color="primary.main"> 地點：</Box>香港 - 日本大阪
         </Box>
-        <Box alignItems="center" display="flex">
-          <ParkIcon color="primary" />
-          出發日期：27-07-2023
+        <Box color="#eceae1" alignItems="center" display="flex">
+          <ParkIcon color="primary" sx={{ marginRight: "8px" }} />
+          <Box color="primary.main"> 出發日期：</Box>27-07-2023
         </Box>
-        <Box alignItems="center" display="flex">
-          <ParkIcon color="primary" />
-          出發時間：15:40 pm
+        <Box color="#eceae1" alignItems="center" display="flex">
+          <ParkIcon color="primary" sx={{ marginRight: "8px" }} />
+          <Box color="primary.main"> 出發時間：</Box>15:40 pm
         </Box>
       </Stack>
       <Stack
@@ -103,41 +107,44 @@ export const Main = () => {
         </Box>
         <LuggageDialog />
       </Stack>
-
       <Stack
-        spacing={3}
+        spacing={2}
         width="80%"
-        bgcolor="#fff"
+        bgcolor="success.main"
         borderRadius={3}
         p={3}
         boxShadow={1}
       >
-        <Box component={"h3"}>回程機票</Box>
+        <Box color="primary.main" sx={{ textShadow: "0 0 4px #eceae1" }}>
+          回程航班
+        </Box>
         <Box
           component={"h1"}
           sx={{
-            color: "primary.main",
+            color: "#eceae1",
             display: "flex",
             justifyContent: "center",
+            fontWeight: "bold",
+            textShadow: "0 0 4px #eceae19b",
           }}
         >
           {nameMapping[user]?.reference}
         </Box>
-        <Box alignItems="center" display="flex">
-          <FlightIcon color="primary" />
-          航班：UO 687
+        <Box color="#eceae1" alignItems="center" display="flex">
+          <FlightIcon color="primary" sx={{ marginRight: "8px" }} />
+          <Box color="primary.main"> 航班：</Box>UO 687
         </Box>
-        <Box alignItems="center" display="flex">
-          <ParkIcon color="primary" />
-          地點：日本大阪 - 香港
+        <Box color="#eceae1" alignItems="center" display="flex">
+          <ParkIcon color="primary" sx={{ marginRight: "8px" }} />
+          <Box color="primary.main"> 地點：</Box>日本大阪 - 香港
         </Box>
-        <Box alignItems="center" display="flex">
-          <ParkIcon color="primary" />
-          出發日期：01-08-2023
+        <Box color="#eceae1" alignItems="center" display="flex">
+          <ParkIcon color="primary" sx={{ marginRight: "8px" }} />
+          <Box color="primary.main"> 出發日期：</Box>01-08-2023
         </Box>
-        <Box alignItems="center" display="flex">
-          <ParkIcon color="primary" />
-          出發時間：15:40 pm
+        <Box color="#eceae1" alignItems="center" display="flex">
+          <ParkIcon color="primary" sx={{ marginRight: "8px" }} />
+          <Box color="primary.main"> 出發時間：</Box>15:40 pm
         </Box>
       </Stack>
     </Stack>

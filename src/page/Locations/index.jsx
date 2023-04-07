@@ -83,7 +83,11 @@ export default function Locations() {
         ) : (
           <Box>
             {locations.map((item) => (
-              <Chip label={item} onClick={() => handleClick(item)} />
+              <Chip
+                label={item}
+                onClick={() => handleClick(item)}
+                sx={{ margin: "4px 6px" }}
+              />
             ))}
           </Box>
         )}

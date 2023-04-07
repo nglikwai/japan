@@ -39,7 +39,11 @@ export default function SimpleBottomNavigation() {
       boxShadow={4}
       boxSizing="border-box"
       maxWidth="100vw"
-      sx={{ background: "white" }}
+      sx={{
+        boxShadow: "none",
+        padding: "10px",
+        boxSizing: "border-box",
+      }}
     >
       {location.pathname !== "/" && (
         <BottomNavigation

@@ -41,15 +41,20 @@ export const PageWrapper = ({ children }) => {
 
   return (
     <Stack width="100vw" boxSizing="border-box" bgcolor={"#f9f9f9"}>
-      {children}
+      <Box height="90vh" boxSizing="border-box" overflow="scroll">
+        {children}
+      </Box>
 
       <SimpleSnackbar />
+
       <Box
+        height="10vh"
         sx={{
-          position: "sticky",
-          bottom: "10px",
           width: "100vw",
+          background: "white",
         }}
+        boxSizing="border-box"
+        boxShadow="0 0 20px #ddd"
       >
         <SimpleBottomNavigation />
       </Box>
