@@ -38,7 +38,7 @@ export default function SimpleBottomNavigation() {
     <Box
       boxShadow={4}
       boxSizing="border-box"
-      maxWidth="100vw"
+      maxWidth="99vw"
       sx={{
         boxShadow: "none",
         padding: "10px",
@@ -60,11 +60,7 @@ export default function SimpleBottomNavigation() {
           <BottomNavigationAction label="相冊" icon={<PhotoLibraryIcon />} />
           <BottomNavigationAction
             icon={
-              <Avatar
-                alt="Remy Sharp"
-                src={`/static/images/${user}.png`}
-                sx={{ padding: "0 0" }}
-              />
+              <Avatar alt="Remy Sharp" src={`/static/images/${user}.png`} />
             }
           />
         </BottomNavigation>

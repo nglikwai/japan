@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import SimpleBottomNavigation from "../BottomNavigation";
 import SimpleSnackbar from "../SnackBar";
 import { useCookies } from "react-cookie";
+import { getFamily } from "../../utils/api/family";
 
 export const PageWrapper = ({ children }) => {
   const navigate = useNavigate();
@@ -28,11 +29,10 @@ export const PageWrapper = ({ children }) => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch(
-        `https://api-dse00.herokuapp.com/familys/${user}`
-      );
-      const json = await response.json();
-      setLocations(json.data.locations);
+      const response = await getFamily(user);
+      console.log("likwai0", response);
+
+      setLocations(response.data.locations);
     };
     if (user) {
       fetchData();
@@ -40,7 +40,12 @@ export const PageWrapper = ({ children }) => {
   }, [user]);
 
   return (
-    <Stack width="100vw" boxSizing="border-box" bgcolor={"#f9f9f9"}>
+    <Stack
+      height="100vh"
+      width="100vw"
+      boxSizing="border-box"
+      bgcolor={"#f9f9f9"}
+    >
       <Box height="90vh" boxSizing="border-box" overflow="scroll">
         {children}
       </Box>

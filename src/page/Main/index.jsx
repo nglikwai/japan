@@ -27,7 +27,7 @@ export const Main = () => {
         bgcolor="success.main"
         borderRadius={3}
         p={3}
-        boxShadow={1}
+        boxShadow="0 0 24px #bbb"
       >
         <Box color="primary.main" sx={{ textShadow: "0 0 4px #eceae1" }}>
           出發航班
@@ -88,12 +88,16 @@ export const Main = () => {
                 我想去
               </Box>
               {locations.map((item) => (
-                <Chip label={item} sx={{ marginRight: "10px" }} />
+                <Chip key={item} label={item} sx={{ marginRight: "10px" }} />
               ))}
             </Box>
           </>
         )}
-        <Button variant="contained" onClick={goToLocation}>
+        <Button
+          variant="contained"
+          onClick={goToLocation}
+          sx={{ borderRadius: "1rem" }}
+        >
           選擇景點
         </Button>
       </Stack>
@@ -113,7 +117,7 @@ export const Main = () => {
         bgcolor="success.main"
         borderRadius={3}
         p={3}
-        boxShadow={1}
+        boxShadow="0 0 24px #bbb"
       >
         <Box color="primary.main" sx={{ textShadow: "0 0 4px #eceae1" }}>
           回程航班

@@ -7,20 +7,23 @@ import { IconButton, Chip, Box } from "@mui/material";
 import InfoIcon from "@mui/icons-material/Info";
 import LocationDialog from "../../components/LocationDialog";
 import { useUser } from "../../Context/user";
-import { itemData } from "../../constants";
+import { itemData, itemData_kyoto } from "../../constants";
 import RoomIcon from "@mui/icons-material/Room";
 import GroupsIcon from "@mui/icons-material/Groups";
 import GroupIcon from "@mui/icons-material/Group";
 import PersonIcon from "@mui/icons-material/Person";
+import LocationStepper from "../../components/Stepper";
+import { getRank } from "../../utils/api/family";
 
 export default function Locations() {
   const { locations } = useUser();
   const [open, setOpen] = useState(false);
   const imageRefs = useRef([]);
   const [locationsWe, setLocationsWe] = useState([]);
-
+  const [activeStep, setActiveStep] = useState(0);
   const [story, setStory] = useState({ title: "", description: "" });
-
+  const [locationSelect, setLocationSelect] = useState([]);
+  const [reload, setReload] = useState("");
   const handleClickOpen = (item) => {
     setStory({ title: item.title, description: item.description });
     setOpen(true);
@@ -29,23 +32,43 @@ export default function Locations() {
     setOpen(false);
   };
 
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await getRank();
+      console.log(response.data);
+      setLocationsWe(response.data);
+    };
+    fetchData();
+  }, []);
+
+  useEffect(() => {
+    if (activeStep === 0) {
+      setLocationSelect(itemData);
+    }
+    if (activeStep === 1) {
+      setLocationSelect(itemData_kyoto);
+    }
+  }, [activeStep]);
+
   const handleClick = (item) => {
-    const _item = itemData.find((i) => i.title === item);
-    const index = itemData.indexOf(_item);
+    if (!locationSelect.map((i) => i.title).includes(item)) {
+      setActiveStep(activeStep === 0 ? 1 : 0);
+      setReload(item);
+      return;
+    }
+    const _item = locationSelect.find((i) => i.title === item);
+    const index = locationSelect.indexOf(_item);
     imageRefs.current[index].scrollIntoView({ behavior: "smooth" });
   };
 
   useEffect(() => {
-    const fetchData = async () => {
-      const response = await fetch(
-        `https://api-dse00.herokuapp.com/familys/locations/ranks`
-      );
-      const json = await response.json();
-      setLocationsWe(json.data);
-      console.log(json);
-    };
-    fetchData();
-  }, []);
+    if (reload !== "") {
+      setTimeout(() => {
+        console.log("likwai", reload);
+        handleClick(reload);
+      }, 1000);
+    }
+  }, [reload]);
 
   const countIcon = (i) => {
     if (i === 1) {
@@ -67,23 +90,25 @@ export default function Locations() {
         alignItems="center"
       >
         <RoomIcon />
-        景點選擇
+        景點選擇 - {activeStep === 0 ? "大阪" : "京都"}
       </Box>
-
+      <LocationStepper activeStep={activeStep} setActiveStep={setActiveStep} />
       <LocationDialog
         open={open}
         handleClickOpen={handleClickOpen}
         handleClose={handleClose}
         story={story}
         setStory={setStory}
+        locationSelect={locationSelect}
       />
-      <ImageListItem key="Subheader" cols={2}>
+      <ImageListItem key="Subheader" sx={{ padding: "10px" }} cols={2}>
         {locations.length < 1 ? (
           <ListSubheader component="div">已選擇景點</ListSubheader>
         ) : (
           <Box>
             {locations.map((item) => (
               <Chip
+                key={`${item}a`}
                 label={item}
                 onClick={() => handleClick(item)}
                 sx={{ margin: "4px 6px" }}
@@ -102,23 +127,22 @@ export default function Locations() {
         他們想去
         {locationsWe.length > 0 &&
           locationsWe.map((item) => (
-            <>
-              <Chip
-                sx={{ margin: "4px 6px" }}
-                label={
-                  <Box display="flex" alignItems="center">
-                    <Box pr="2px">{item.value}</Box>
-                    {countIcon(item.count)}
-                  </Box>
-                }
-                onClick={() => handleClick(item.value)}
-              />
-            </>
+            <Chip
+              key={item.value}
+              sx={{ margin: "4px 6px" }}
+              label={
+                <Box display="flex" alignItems="center">
+                  <Box pr="2px">{item.value}</Box>
+                  {countIcon(item.count)}
+                </Box>
+              }
+              onClick={() => handleClick(item.value)}
+            />
           ))}
       </Box>
       <ImageList>
-        {itemData.map((item, index) => (
-          <ImageListItem cols={2} key={item.title}>
+        {locationSelect.map((item, index) => (
+          <ImageListItem cols={2} key={`${item.title}-${index}`}>
             <img
               src={`${item.img}`}
               srcSet={`${item.img}`}

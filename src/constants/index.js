@@ -1,14 +1,9 @@
-import FastfoodIcon from "@mui/icons-material/Fastfood";
-import LaptopMacIcon from "@mui/icons-material/LaptopMac";
 import HotelIcon from "@mui/icons-material/Hotel";
 import LuggageIcon from "@mui/icons-material/Luggage";
-import Typography from "@mui/material/Typography";
 import FlightTakeoffIcon from "@mui/icons-material/FlightTakeoff";
 import FlightLandIcon from "@mui/icons-material/FlightLand";
 import RestaurantIcon from "@mui/icons-material/Restaurant";
-import { Box, Stack } from "@mui/material";
 import AirplaneTicketIcon from "@mui/icons-material/AirplaneTicket";
-import TimeToLeaveIcon from "@mui/icons-material/TimeToLeave";
 
 export const nameMapping = {
     dad: {
@@ -143,6 +138,16 @@ export const itemData = [
         img: 'https://img.bigfang.tw/2017/09/1504253340-4fd8f41feb6f8374962b9bfd5fdd198f.jpg'
     },
 ];
+
+export const itemData_kyoto = [
+    {
+        title: "京都城",
+        description:
+            "京都城是日本最具代表性的城堡之一，是京都市最重要的旅遊景點之一。",
+        img: "https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fsafe-img.xhscdn.com%2Fbw1%2Ff35e7b26-5015-4c1b-a801-e88dec03b4be%3FimageView2%2F2%2Fw%2F1080%2Fformat%2Fjpg&refer=http%3A%2F%2Fsafe-img.xhscdn.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1683638488&t=27c86e34eb443d9705f1ce4cec1f3c9f",
+        author: "@日本〒540-0002 京都府京都市中央区京都城１−１",
+    },
+]
 
 
 export const location_plan = [

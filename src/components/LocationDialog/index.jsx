@@ -8,6 +8,7 @@ import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
 import { Typography, Checkbox, Button } from "@mui/material";
 import { useUser } from "../../Context/user";
+import { updateFamily } from "../../utils/api/family";
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   "& .MuiDialogContent-root": {
@@ -47,20 +48,20 @@ BootstrapDialogTitle.propTypes = {
   onClose: PropTypes.func.isRequired,
 };
 
-export default function LocationDialog({ open, handleClose, story }) {
+export default function LocationDialog({
+  open,
+  handleClose,
+  story,
+  locationSelect,
+}) {
   const { user, setNotice, setLocations, locations, setNoticeOpen } = useUser();
 
+  const sessionLength = locations.filter((i) =>
+    locationSelect.map((j) => j.title).includes(i)
+  ).length;
+
   const updateUserLocations = async (loca) => {
-    fetch(`https://api-dse00.herokuapp.com/familys/${user}`, {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ locations: loca }),
-    })
-      .then((response) => response.json())
-      .then((data) => console.log(data))
-      .catch((error) => console.error(error));
+    updateFamily(loca, user);
   };
   const handleWantGo = (e) => {
     handleClose();
@@ -72,7 +73,7 @@ export default function LocationDialog({ open, handleClose, story }) {
       setLocations(_locations);
       updateUserLocations(_locations);
     } else {
-      if (locations.length > 5) {
+      if (sessionLength > 5) {
         setNoticeOpen(true);
         setNotice("每人只能選擇 6 個");
         return;
@@ -105,9 +106,9 @@ export default function LocationDialog({ open, handleClose, story }) {
             checked={locations.includes(story.title)}
             onChange={handleWantGo}
           />
-          {locations.length > 5
-            ? "每人選擇 6 個"
-            : `我想去這裡 ${locations.length} / 6`}
+          {sessionLength > 5
+            ? "每人每邊選擇 6 個"
+            : `我想去這裡 ${sessionLength} / 6`}
         </DialogActions>
       </BootstrapDialog>
     </div>

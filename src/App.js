@@ -16,8 +16,6 @@ function App() {
       <Route path='/plan' element={<Plan />} />
       <Route path='/album' element={<Album />} />
       <Route path='/setting' element={<Setting />} />
-
-
     </Routes>
 
   );
